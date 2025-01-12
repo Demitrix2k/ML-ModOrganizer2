@@ -17,6 +17,11 @@ function getTutorialSteps()
         },
         function() {
             unhighlight()
+            tutorial.text = qsTr("We encourage you to explore around, such as the Filetree tab, to get a sense and an overview of how mods are structured.")
+            waitForClick()
+        },
+        function() {
+            unhighlight()
             tutorial.text = qsTr("We may revisit this screen in later tutorials.")
             waitForClick()
         }

@@ -149,14 +149,12 @@ function getTutorialSteps()
     },
 
     function() {
-        tutorial.text = qsTr("The most common plugin file container formats are ESP and ESM, but there are others such as ESL. "
-                            +"disabled.")
+        tutorial.text = qsTr("The most common plugin file container formats are ESP and ESM, but there are others such as ESL. ")
         waitForClick()
     },
 
     function() {
-        tutorial.text = qsTr("You may notice some plugins are grayed out. These are part of the main game and can't be "
-                            +"disabled.")
+        tutorial.text = qsTr("You may notice some plugins are grayed out. These are part of the main game and can't be disabled. ")
         waitForClick()
     },
 

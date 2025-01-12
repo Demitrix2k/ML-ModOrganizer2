@@ -37,18 +37,20 @@ function getTutorialSteps() {
             waitForClick()
         },
         function() {
-            tutorial.text = qsTr("With MO, both \"Mod A\" and \"Mod B\" are installed independently, without overwriting "
+            tutorial.text = qsTr("With MO2, both \"Mod A\" and \"Mod B\" are installed independently, without overwriting "
                                + "any files. Initially, \"Mod B\" gets to provide the leather armor because it's automatically "
-                               + "assigned the higher priority installation <B>order</B> number."
-                               + "Usually the column is ordered such that the highest number assigned to a mod is at the bottom."
-                               + "and the lowest number \"0\" at the top of the column list in priority."
+                               + "assigned the higher priority installation <B>order number</B>. "
+                               + "Usually the \"Priority\" column is ordered such that the highest number "
+                               + "assigned to a mod is at the bottom of modlist.               "
+                               + "and the lowest number \"0\" at the top of the priotity column."
                                + "Which sets the standard that mods loaded lower in the list wins file conflicts.")
-            highlightItem("COL_PRIORITY", true)
+            highlightItem("modList", true)
             waitForClick()
         },
         function() {
-            tutorial.text = qsTr("However, you can change the mod order at any time by dragging and dropping mods in the list. "
-                               + "If you assign \"Mod A\" a higher priority number, it provides the leather armor, no re-installation required. "
+            tutorial.text = qsTr("However, you can change the installation order of a mod at any time by dragging and dropping mods in the list. "
+                               + "If you assign \"Mod A\" a higher priority number than \"Mod B\" "
+                               + "it overwrites the leather armor, no re-installation required. "
                                + "Since the priorities of mods in this list are treated as if the mods were installed in that order, "
                                + "you can think of this as a way to change the order in which mods are installed. "
                                + "this can generally be referred to as <b>mod installation order</b>  .")
@@ -57,6 +59,11 @@ function getTutorialSteps() {
         },
         function() {
             tutorial.text = qsTr("If the \"Flags\" column is enabled in the mod list, it will show you which mods are involved in a conflict.")
+            waitForClick()
+        },
+        function() {
+            unhighlight()
+            tutorial.text = qsTr("<img src=\"qrc:///MO/gui/modlist_priority\" /> This is modlist install priority order, make sure lowest number always sorted to top.")
             waitForClick()
         },
         function() {

@@ -28,7 +28,7 @@ function getTutorialSteps()
             waitForClick()
         },
         function() {
-            tutorial.text = qsTr("This text will turn green if MO thinks the structure looks good.")
+            tutorial.text = qsTr("This text will turn green if MO2 thinks the structure looks good.")
             highlightItem("problemLabel", false)
             manager.finishWindowTutorial("InstallDialog")
             waitForClick()
