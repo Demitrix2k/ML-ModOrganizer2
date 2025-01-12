@@ -39,14 +39,19 @@ function getTutorialSteps() {
         function() {
             tutorial.text = qsTr("With MO, both \"Mod A\" and \"Mod B\" are installed independently, without overwriting "
                                + "any files. Initially, \"Mod B\" gets to provide the leather armor because it's automatically "
-                               + "assigned the higher priority.")
+                               + "assigned the higher priority installation <B>order</B> number."
+                               + "Usually the column is ordered such that the highest number assigned to a mod is at the bottom."
+                               + "and the lowest number \"0\" at the top of the column list in priority."
+                               + "Which sets the standard that mods loaded lower in the list wins file conflicts.")
+            highlightItem("COL_PRIORITY", true)
             waitForClick()
         },
         function() {
-            tutorial.text = qsTr("However, you can change the mod priority at any time by dragging and dropping mods in the list. "
-                               + "If you assign \"Mod A\" a higher priority, it provides the leather armor, no re-installation required. "
+            tutorial.text = qsTr("However, you can change the mod order at any time by dragging and dropping mods in the list. "
+                               + "If you assign \"Mod A\" a higher priority number, it provides the leather armor, no re-installation required. "
                                + "Since the priorities of mods in this list are treated as if the mods were installed in that order, "
-                               + "this can generally be referred to as \"installation order\".")
+                               + "you can think of this as a way to change the order in which mods are installed. "
+                               + "this can generally be referred to as <b>mod installation order</b>  .")
             highlightItem("modList", false)
             waitForClick()
         },
@@ -102,21 +107,7 @@ function getTutorialSteps() {
         function() {
             unhighlight()
             tutorial.text = qsTr("That is everything you need to know about file conflicts. The second type of conflict "
-                               + "to deal with is \"record conflicts\".")
-            waitForClick()
-        },
-        function() {
-            tutorial.text = qsTr("In the \"First Steps\" tutorial, you learned how plugins contain changes to the game "
-                               + "world, like modifications to the terrain or existing NPCs. Each of these changes is "
-                               + "stored in a record, hence the name \"record conflict\". For example, when two mods "
-                               + "try to change the same location, only one change can become active.")
-            waitForClick()
-        },
-        function() {
-            tutorial.text = qsTr("Similar to the mod list, you will have to choose which plugins will be loaded last "
-                               + "and take priority over other records. This time around however, choosing an incorrect "
-                               + "order can cause your game to become unstable, as there may be strict dependencies "
-                               + "between plugin files and records.")
+                               + "to deal with is \"record conflicts\" also known as plugin load order conflicts.")
             waitForClick()
         },
         function() {
@@ -127,65 +118,53 @@ function getTutorialSteps() {
             }
         },
         function() {
+            tutorial.text = qsTr("In the \"First Steps\" tutorial, you learned how plugins contain changes to the game "
+                               + "world, like modifications to the terrain or existing NPCs. Each of these changes is "
+                               + "stored in a record, hence the name \"record conflict\". For example, when two mods "
+                               + "try to change the same location, it only uses the record from the lower ordered mod .")
+            waitForClick()
+        },
+        function() {
             tutorial.text = qsTr("As with mods, you can drag and drop plugins to change their priority, thus deciding "
                                + "which plugins take precedence in regards to conflicts. This is commonly called the "
-                               + "\"load order\". But how do you know how to order the plugins?")
+                               + "\"Plugin load order\". The game loads plugins from top to bottom  number order "
+                               + "and last loaded record in the list, gets loaded into the game .")
             waitForClick()
         },
         function() {
-            unhighlight()
-            tutorial.text = qsTr("Unlike with file conflicts, MO can provide only minimal help, indicating whether "
-                               + "required \"master\" plugins are present in the load order. The good news is, there "
-                               + "is a perfect tool for that called LOOT.")
-            waitForClick()
-        },
-        function() {
-            tutorial.text = qsTr("MO has a built in integration with LOOT which can be used via the \"Sort\" button for "
-                               + "any supported game. This will attempt to use any configuration set up within the "
-                               + "main LOOT application.")
-            highlightItem("sortButton", false)
-            waitForClick()
-        },
-        function() {
-            unhighlight()
-            tutorial.text = qsTr("If LOOT has been installed, Mod Organizer should detect it for any supported game and "
-                               + "automatically add it to the available tools.")
-            highlightItem("startGroup", false)
-            waitForClick()
-        },
-        function() {
-            tutorial.text = qsTr("When you run LOOT, it will automatically re-organize plugins for best compatibility "
-                               + "(overwriting your manual changes). It will also notate the plugin list with "
-                               + "information about patches, incompatibilities, and other useful info. This is true "
-                               + "in both the main LOOT application and for the integration within Mod Organizer.")
-            waitForClick()
-        },
-        function() {
-            unhighlight()
-            tutorial.text = qsTr("The final type of conflicts are a subset of \"record conflicts\". We will call these "
-                               + "\"lists conflicts\". As briefly mentioned earlier, these types of record conflicts "
-                               + "can be merged so you may be able to get all modifications in your game.")
+            tutorial.text = qsTr("Similar to the mod installation list, you will have to choose which plugins will load last/lower "
+                               + "and take priority over other records. This time around however, choosing an incorrect "
+                               + "order can cause your game to become unstable, as there may be strict dependencies "
+                               + "between plugin files and records.")
             waitForClick()
         },
         function() {
             tutorial.text = qsTr("One common example of such records are leveled lists that contain all the items that "
                                + "may spawn at a specific character level. Traditionally, if multiple mods add items to "
                                + "such a list, only one of these mods will actually take effect. In some cases, there "
-                               + "are community-made patches to resolve these issues.")
+                               + "are community-made patches to resolve these issues, and tools to resolve them aswell")
             waitForClick()
         },
         function() {
-            tutorial.text = qsTr("Fortunately, there are also tools to merge many types of records so that they can all "
-                               + "take effect. For Oblivion, Skyrim, and Fallout 4, look for Wrye Bash. For Fallout 3 "
-                               + "and New Vegas, you can use Wrye Flash. These can create a \"bashed patch,\" which is "
-                               + "a plugin that combines many mergeable records from all of your mods. There are other, "
-                               + "similar tools for more specific tasks such as 'Synergy'.")
+            unhighlight()
+            tutorial.text = qsTr("Unlike with file conflicts, MO2 can provide only minimal help, indicating whether "
+                               + "required \"master\" plugins are present in the load order. The good news is, there "
+                               + "is a perfect tool for that called xEdit.")
             waitForClick()
         },
         function() {
-            tutorial.text = qsTr("Finally, advanced users may consider using 'xEdit', a robust tool for comparing, "
-                               + "modifying, and cleaning plugin records. With this you can create your own custom "
-                               + "patch files to merge any combination of plugins and records.")
+            unhighlight()
+            tutorial.text = qsTr("xEdit gives you a detailed view of the records in your plugins, and allows you to "
+                               + "edit or remove plugin records, aswell as resolve conflicts by helping determine "
+                               + "if a mod should be placed above or below other mods by giving you a detailed view of the records in your plugins."
+                               + "it also allows you to create custom patches to merge records from multiple plugins.")
+            waitForClick()
+        },
+        function() {
+            unhighlight()
+            tutorial.text = qsTr("Moddinglinked's website contains guides for basic xedit usage in Resources section "
+                               + "And there are guides available elsewhere, such as Youtube."
+                               + "You can also ask for help on the Moddinglinked Discord server.")
             waitForClick()
         },
         function() {

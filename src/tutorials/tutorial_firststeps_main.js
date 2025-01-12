@@ -4,7 +4,7 @@ function getTutorialSteps()
   return [
     function() {
         tutorial.text = qsTr("Welcome to the Mod Organizer Tutorial! This will guide you through the most common "
-                           + "features of MO2.\n\n"
+                           + "features of MO2 ML Fork.\n\n"
                            + "It is highly recommended for first-time users to complete the tutorial from beginning "
                            + "to end to properly demonstrate key components of the tool.")
         waitForClick()
@@ -140,6 +140,18 @@ function getTutorialSteps()
         } else {
             waitForClick()
         }
+    },
+
+    function() {
+        tutorial.text = qsTr("Plugins are files formats containing records of information the game uses, such as items, quests, NPCs, etc. "
+                            +"disabled.")
+        waitForClick()
+    },
+
+    function() {
+        tutorial.text = qsTr("The most common plugin file container formats are ESP and ESM, but there are others such as ESL. "
+                            +"disabled.")
+        waitForClick()
     },
 
     function() {
